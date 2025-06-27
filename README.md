@@ -20,11 +20,11 @@ This repository contains simple example sketches for the **2.8" ESP32 Display JC
 ## 📁 Included Samples
 
 ### 1. Basic Board Test
-Just to make sure you can connect and communicate. 
+Just to make sure you can connect and communicate - It shows the built in RGB rotate through colors on the board.
 
 
 ### 2. LCD Screen Test
 This test uses the LovyanGFX library to display colored circles and a “Display OK” message.
 
 
-[![Watch the demo](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/hqdefault.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID)
+[Watch the demo on YouTube](https://youtu.be/Q_S0smJb_ac)
