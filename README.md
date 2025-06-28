@@ -28,3 +28,6 @@ This test uses the LovyanGFX library to display colored circles and a “Display
 
 
 [Watch the demo on YouTube](https://youtu.be/Q_S0smJb_ac)
+
+### 3. Capacitive Touch
+This test also uses the LovyanGFX library to interact with the CST820 Capacitive Touchscreen Driver and as you touch will draw circles on the screen.
