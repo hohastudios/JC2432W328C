@@ -31,3 +31,6 @@ This test uses the LovyanGFX library to display colored circles and a “Display
 
 ### 3. Capacitive Touch
 This test also uses the LovyanGFX library to interact with the CST820 Capacitive Touchscreen Driver and as you touch will draw circles on the screen.
+
+### 4. LVGL UI Library - Button and Slider
+This test shows how to incorporate [LVGL Version 9](https://docs.lvgl.io/master/examples.html) button and slider as a starting point for building out your user interfaces. 
