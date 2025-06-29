@@ -2,6 +2,8 @@
 #include "CST820.h"
 #include <lvgl.h>
 #include <WiFi.h>
+#include <Preferences.h>
+Preferences prefs;
 
 // ======= App Info =======
 static const char* App_Name = "Internet Clock";
@@ -231,11 +233,20 @@ void start_wifi_connection(const char* ssid, const char* password) {
   }
 
   if (WiFi.status() == WL_CONNECTED) {
-    lv_label_set_text(status_label, "✅ Connected!");
-    Serial.println("\n✅ Connected to Wi-Fi.");
+      lv_label_set_text_fmt(status_label, "%s Connected!", LV_SYMBOL_OK);
+      Serial.println("\n✅ Connected to Wi-Fi.");
+      Serial.print("📡 IP Address: ");
+      Serial.println(WiFi.localIP());
+
+      // ✅ Save credentials now that we know they work
+      prefs.begin("wifi", false); // RW mode
+      prefs.putString("ssid", ssid);
+      prefs.putString("pass", password);
+      prefs.end();
+
   } else {
-    lv_label_set_text(status_label, "❌ Failed to connect.");
-    Serial.println("\n❌ Failed to connect.");
+      lv_label_set_text_fmt(status_label, "%s Failed to connect.", LV_SYMBOL_CLOSE);
+      Serial.println("\n❌ Failed to connect.");
   }
 
   lv_timer_handler();
@@ -265,7 +276,17 @@ void setup() {
   lv_indev_set_read_cb(indev, touchpad_read_cb);
 
   show_welcome_screen();
-  show_wifi_selection();
+  prefs.begin("wifi", true);
+    String ssid = prefs.getString("ssid", "");
+    String pass = prefs.getString("pass", "");
+    prefs.end();
+
+    if (ssid.length() > 0 && pass.length() > 0) {
+      Serial.printf("📁 Found saved Wi-Fi: %s\n", ssid.c_str());
+      show_connecting_wifi(ssid.c_str(), pass.c_str());
+    } else {
+      show_wifi_selection();
+    }
 }
 
 void loop() {
