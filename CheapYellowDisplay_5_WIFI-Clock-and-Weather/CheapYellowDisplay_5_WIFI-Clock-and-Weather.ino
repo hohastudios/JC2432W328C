@@ -75,6 +75,7 @@ void touchpad_read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
 lv_obj_t* ddlist;
 lv_obj_t* ta_pass;
 lv_obj_t* kb;
+lv_obj_t* status_label; // global or static
 
 // Show welcome screen (10s)
 void show_welcome_screen() {
@@ -162,12 +163,82 @@ void show_wifi_selection() {
   // done event
   lv_obj_add_event_cb(kb, [](lv_event_t* e) {
     if (lv_event_get_code(e) == LV_EVENT_READY) {
-      char buf[64];
-      lv_dropdown_get_selected_str(ddlist, buf, sizeof(buf));
-      const char* pwd = lv_textarea_get_text(ta_pass);
-      Serial.printf("SSID:%s PWD:%s\n", buf, pwd);
+      char ssid_buf[64];
+      lv_dropdown_get_selected_str(ddlist, ssid_buf, sizeof(ssid_buf));
+      const char* pwd_raw = lv_textarea_get_text(ta_pass);
+
+      // Sanitize inputs properly
+      String ssid = String(ssid_buf);
+      ssid.trim();
+
+      String password = String(pwd_raw);
+      password.trim();
+
+      Serial.printf("📶 Connecting to SSID: [%s] with Password: [%s]\n", ssid.c_str(), password.c_str());
+
+      // Call the next screen
+      show_connecting_wifi(ssid.c_str(), password.c_str());
     }
   }, LV_EVENT_ALL, NULL);
+}
+
+void show_connecting_wifi(const char* ssid, const char* password) {
+  lv_obj_clean(lv_screen_active());
+  lv_obj_set_style_bg_color(lv_screen_active(), lv_color_hex(0x000000), LV_PART_MAIN);
+
+  char msg[128];
+  snprintf(msg, sizeof(msg), "Connecting to:\n%s", ssid);
+
+  status_label = lv_label_create(lv_screen_active());
+  lv_label_set_text(status_label, msg);
+  lv_obj_set_style_text_color(status_label, lv_color_white(), LV_PART_MAIN);
+  lv_obj_set_style_text_align(status_label, LV_TEXT_ALIGN_CENTER, 0);
+  lv_obj_set_width(status_label, DISP_W - 20);
+  lv_obj_center(status_label);
+  lv_timer_handler();
+
+  // Copy credentials to heap for use in timer
+  char* ssid_copy = strdup(ssid);
+  char* pwd_copy = strdup(password);
+
+  // Delay connection by ~100 ms to allow screen redraw
+  lv_timer_t* t = lv_timer_create_basic();
+  lv_timer_set_cb(t, [](lv_timer_t* t) {
+    char** creds = (char**)lv_timer_get_user_data(t);
+    start_wifi_connection(creds[0], creds[1]);
+    free(creds[0]); free(creds[1]); free(creds);
+    lv_timer_del(t);
+  });
+
+  // Pass SSID and password as heap-allocated string pair
+  char** creds = (char**)malloc(sizeof(char*) * 2);
+  creds[0] = ssid_copy;
+  creds[1] = pwd_copy;
+  lv_timer_set_user_data(t, creds);
+  lv_timer_set_period(t, 100); // ms
+}
+
+
+void start_wifi_connection(const char* ssid, const char* password) {
+  Serial.printf("🔌 Actually starting connection to: %s\n", ssid);
+
+  WiFi.begin(ssid, password);
+
+  unsigned long startAttempt = millis();
+  while (WiFi.status() != WL_CONNECTED && millis() - startAttempt < 10000) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    lv_label_set_text(status_label, "✅ Connected!");
+    Serial.println("\n✅ Connected to Wi-Fi.");
+  } else {
+    lv_label_set_text(status_label, "❌ Failed to connect.");
+    Serial.println("\n❌ Failed to connect.");
+  }
+
+  lv_timer_handler();
 }
 
 void setup() {
