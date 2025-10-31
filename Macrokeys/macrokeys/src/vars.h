@@ -5,14 +5,6 @@
 #include <stdbool.h>
 #include <BleKeyboard.h>
 
-// enum declarations
-
-// Flow global variables
-
-enum FlowGlobalVariables {
-    FLOW_GLOBAL_VARIABLE_BLE_KEYBOARD = 0
-};
-
 // Native global variables
 extern BleKeyboard ble_Keyboard;
 extern BleKeyboard get_var_ble_keyboard();

@@ -26,7 +26,7 @@ void parse_json(char* input) {
     DeserializationError error = deserializeJson(doc, input);
 
     if (error) {
-    Serial.print("deserializeJson() failed: ");
+    Serial.print("parse_json() failed: ");
     Serial.println(error.c_str());
     return;
     }
