@@ -1,7 +1,7 @@
-#ifndef EEZ_LVGL_UI_EVENTS_H
-#define EEZ_LVGL_UI_EVENTS_H
+#ifndef EEZ_LVGL_UI_ACTIONS_H
+#define EEZ_LVGL_UI_ACTIONS_H
 
-#include <lvgl.h>  
+#include <lvgl.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,4 +16,4 @@ extern void action_btn_ind_right_pressed(lv_event_t * e);
 }
 #endif
 
-#endif /*EEZ_LVGL_UI_EVENTS_H*/
+#endif /*EEZ_LVGL_UI_ACTIONS_H*/

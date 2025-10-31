@@ -1,11 +1,7 @@
 #ifndef EEZ_LVGL_UI_GUI_H
 #define EEZ_LVGL_UI_GUI_H
 
-#include <lvgl/lvgl.h>
-#include <BleKeyboard.h>
-#include "eez-flow.h"
-
-
+#include <lvgl.h>
 
 #if !defined(EEZ_FOR_LVGL)
 #include "screens.h"
@@ -15,9 +11,9 @@
 extern "C" {
 #endif
 
-extern const uint8_t assets[1452];
+extern const uint8_t assets[1476];
 
-void ui_init(BleKeyboard bleKeyboard);
+void ui_init();
 void ui_tick();
 
 #if !defined(EEZ_FOR_LVGL)

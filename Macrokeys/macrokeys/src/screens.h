@@ -1,8 +1,7 @@
 #ifndef EEZ_LVGL_UI_SCREENS_H
 #define EEZ_LVGL_UI_SCREENS_H
 
-#include <lvgl/lvgl.h>
-#include <BleKeyboard.h>
+#include <lvgl.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -35,7 +34,7 @@ void tick_screen_subpage();
 void tick_screen_by_id(enum ScreensEnum screenId);
 void tick_screen(int screen_index);
 
-void create_screens(BleKeyboard blekdb);
+void create_screens();
 
 
 #ifdef __cplusplus

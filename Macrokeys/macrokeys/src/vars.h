@@ -3,27 +3,19 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <BleKeyboard.h>
 
 // enum declarations
-
-
 
 // Flow global variables
 
 enum FlowGlobalVariables {
-    FLOW_GLOBAL_VARIABLE_NONE
+    FLOW_GLOBAL_VARIABLE_BLE_KEYBOARD = 0
 };
 
 // Native global variables
-
-
-
-#ifdef __cplusplus
-}
-#endif
+extern BleKeyboard ble_Keyboard;
+extern BleKeyboard get_var_ble_keyboard();
+extern void set_var_ble_keyboard(BleKeyboard value);
 
 #endif /*EEZ_LVGL_UI_VARS_H*/
