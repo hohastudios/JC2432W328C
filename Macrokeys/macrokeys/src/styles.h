@@ -7,6 +7,11 @@
 extern "C" {
 #endif
 
+// Style: Green
+lv_style_t *get_style_green_MAIN_DEFAULT();
+void add_style_green(lv_obj_t *obj);
+void remove_style_green(lv_obj_t *obj);
+
 
 
 #ifdef __cplusplus
