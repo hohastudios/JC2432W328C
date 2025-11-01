@@ -1,29 +1,155 @@
+/* -------------------------------------------------------------------------- */
+/*  Button press handlers – log the press and send a ‘r’ keystroke if a BLE   */
+/*  keyboard is connected.                                                     */
+/* -------------------------------------------------------------------------- */
 #include <lvgl.h>  
 #include <Arduino.h>
 #include "actions.h"
 #include "vars.h"
 #include "screens.h"
 #include "ui.h"
+
 #include <BleKeyboard.h>
 
-void action_btn_engine_pressed(lv_event_t * e){
-    Serial.println(F("✅ E Pressed!"));
-    if(ble_Keyboard.isConnected()) {
-        Serial.println(F("✅ Sending key stroke!"));    
-        ble_Keyboard.print("e");
-    }
-}
-void action_btn_ind_left_pressed(lv_event_t * e){
-    Serial.println(F("✅ L Pressed!"));
-    if(ble_Keyboard.isConnected()) {
-        Serial.println(F("✅ Sending key stroke!"));    
-        ble_Keyboard.print("l");
-    }
-}
-void action_btn_ind_right_pressed(lv_event_t * e){
-    Serial.println(F("✅ R Pressed!"));
-    if(ble_Keyboard.isConnected()) {
-        Serial.println(F("✅ Sending key stroke!"));    
+
+void action_btn_11_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_11 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
         ble_Keyboard.print("r");
     }
 }
+
+void action_btn_12_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_12 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_13_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_13 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_profile_v_ok_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_profile_v_ok Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_11_1_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_11_1 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_12_1_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_12_1 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_13_1_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_13_1 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_21_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_21 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_22_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_22 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_23_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_23 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_21_1_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_21_1 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_22_1_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_22_1 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+void action_btn_23_1_pressed(lv_event_t * e)
+{
+    Serial.println(F("✅ btn_23_1 Pressed!"));
+    if (ble_Keyboard.isConnected()) {
+        Serial.println(F("✅ Sending key stroke!"));
+        ble_Keyboard.print("r");
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Navigation handlers – currently no specific logic defined.             */
+/* -------------------------------------------------------------------------- */
+
+void action_goto_main_v(lv_event_t * e)
+{
+    // TODO: Implement navigation to main view.
+}
+
+void action_goto_profile_v(lv_event_t * e)
+{
+    // TODO: Implement navigation to profile view.
+}
+
+#ifdef __cplusplus
+}
+#endif(lv_event_t * e)
+{
+    /* TODO: Implement handler */
+}
+
+#ifdef __cplusplus
+}
+#endif
