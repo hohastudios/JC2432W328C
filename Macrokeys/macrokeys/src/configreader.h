@@ -1,19 +1,17 @@
-#ifndef EEZ_LVGL_UI_VARS_H
-#define EEZ_LVGL_UI_VARS_H
+#ifndef CONFIGREADER_H          // ← NEW, unique guard
+#define CONFIGREADER_H
 #include <FS.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void read_config_file(fs::FS &fs, const char * path); 
 void parse_json(char* input);
-String read_sd_directory();
-
-
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /*EEZ_LVGL_UI_VARS_H*/
+void read_config_file(String path); 
+String read_sd_directory();
+#endif /* CONFIGREADER_H */

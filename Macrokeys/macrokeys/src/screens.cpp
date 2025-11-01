@@ -60,6 +60,13 @@ void create_screen_startup() {
             lv_obj_set_pos(obj, 0, 26);
             lv_obj_set_size(obj, 320, 153);
             lv_roller_set_options(obj, profiles.c_str(), LV_ROLLER_MODE_INFINITE);
+            lv_obj_add_event_cb(obj, action_profile_value_changed, LV_EVENT_VALUE_CHANGED, (void *)0);
+            {
+                char buffer[64]; 
+                /* Retrieve the currently selected string  */
+                lv_roller_get_selected_str(obj, buffer, sizeof(buffer));
+                set_selected_str(buffer);   
+            }
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xff39b47a), LV_PART_SELECTED | LV_STATE_DEFAULT);
         }
         {

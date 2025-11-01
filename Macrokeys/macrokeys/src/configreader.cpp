@@ -45,10 +45,13 @@ String read_sd_directory()
   return options;
 }
 
-void read_config_file(fs::FS &fs, const char * path) {
-  Serial.printf("Reading file: %s\n", path);
-
-  File file = fs.open(path);
+void read_config_file(String path) {
+  Serial.println(String("Reading file: ") + path);
+  if (!SD.begin()) { 
+      Serial.println("Card Mount Failed");
+      return;
+  }
+  File file = SD.open("/macrokeys/config/" + path);
   if (!file || file.isDirectory()) {
     Serial.println("Failed to open file for reading");
     return;

@@ -22,7 +22,7 @@ extern void action_btn_21_1_pressed(lv_event_t * e);
 extern void action_btn_22_1_pressed(lv_event_t * e);
 extern void action_btn_23_1_pressed(lv_event_t * e);
 extern void action_goto_profile_v(lv_event_t * e);
-
+extern void action_profile_value_changed(lv_event_t *e); 
 
 #ifdef __cplusplus
 }

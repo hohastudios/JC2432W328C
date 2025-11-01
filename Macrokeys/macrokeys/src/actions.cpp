@@ -128,13 +128,27 @@ void action_btn_23_1_pressed(lv_event_t * e)
     }
 }
 
+
+void action_profile_value_changed(lv_event_t *e) {
+    //* 1️⃣ Fetch the roller that fired the event  */
+    lv_obj_t *roller = (lv_obj_t *)lv_event_get_target(e);
+
+    char buffer[64]; 
+    /* 2️⃣ Retrieve the currently selected string  */
+    lv_roller_get_selected_str(roller, buffer, sizeof(buffer));
+
+    set_selected_str(std::string(buffer).c_str());              // free it after use if set_selected_str() copies it internally
+}
+
 /* -------------------------------------------------------------------------- */
 /*  Navigation handlers – currently no specific logic defined.             */
 /* -------------------------------------------------------------------------- */
 
 void action_goto_main_v(lv_event_t * e)
 {
-    
+    //load selected config
+    read_config_file(get_selected_str());
+    //parse json
     loadScreen(SCREEN_ID_MAIN);   
 }
 

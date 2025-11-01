@@ -23,6 +23,7 @@ extern const char* lbl_btn_21_1;
 extern const char* lbl_btn_22_1;
 extern const char* lbl_btn_23_1;
 
+
 /* --------------------------------------------------------------------
  *  Inline accessors (getters / setters)
  *  ---------------------------------------------------------------*/
@@ -97,6 +98,10 @@ inline void        set_lbl_btn_22_1(const char* v) noexcept { lbl_btn_22_1 = v; 
 // ------------------------------------------------------------------
 inline const char* get_lbl_btn_23_1() noexcept  { return lbl_btn_23_1; }
 inline void        set_lbl_btn_23_1(const char* v) noexcept { lbl_btn_23_1 = v; }
+
+void   set_selected_str(const char *str);
+const char *get_selected_str(void);   // returns a `const char*`
+
 
 extern BleKeyboard get_var_ble_keyboard();
 extern void set_var_ble_keyboard(BleKeyboard value);
