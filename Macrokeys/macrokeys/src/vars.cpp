@@ -2,6 +2,7 @@
 #include <BleKeyboard.h>
 
 BleKeyboard ble_Keyboard;
+String profiles;
 
 BleKeyboard get_var_ble_keyboard() {
     return ble_Keyboard;

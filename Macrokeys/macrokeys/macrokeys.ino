@@ -4,8 +4,10 @@
 #include "src/ui.h"
 #include "src/configreader.h"
 #include <lvgl.h> 
+#include "src/vars.h"
 
 extern BleKeyboard ble_Keyboard;
+extern String profiles;
 
 // ======= Display Setup for ST7789 on ESP32 =======
 class LGFX_JustDisplay : public lgfx::LGFX_Device {
@@ -88,7 +90,8 @@ void setup() {
   delay(1500);
   Serial.println(F("🧪 LVGL v9 + CST820 + ST7789"));
   Serial.println(F("MacroKeys Launching..."));
-  Serial.println(read_sd_directory());
+  profiles=read_sd_directory();
+  Serial.println(profiles);
   // Backlight
   pinMode(27, OUTPUT);
   digitalWrite(27, HIGH);

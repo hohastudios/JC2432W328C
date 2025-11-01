@@ -59,7 +59,7 @@ void create_screen_startup() {
             objects.config_selector = obj;
             lv_obj_set_pos(obj, 0, 26);
             lv_obj_set_size(obj, 320, 153);
-            lv_roller_set_options(obj, _("Option 1\nOption 2\nOption 3"), LV_ROLLER_MODE_INFINITE);
+            lv_roller_set_options(obj, profiles.c_str(), LV_ROLLER_MODE_INFINITE);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xff39b47a), LV_PART_SELECTED | LV_STATE_DEFAULT);
         }
         {

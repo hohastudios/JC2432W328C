@@ -28,9 +28,11 @@ String read_sd_directory()
   while (file) {
     // Skip sub‑directories – we only want regular files
     if (!file.isDirectory()) {
-      // Append the file name and a newline to build the LVGL string
+      // Prepend a newline *only* if there is already something in the string
+      if (!options.isEmpty()) {
+        options += "\n";
+      }
       options += String(file.name());   // e.g., "option1"
-      options += "\n";
     }
 
     file.close();          // Close the current entry before opening the next
