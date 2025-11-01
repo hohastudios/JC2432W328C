@@ -12,6 +12,12 @@ extern "C" {
 
 #include "vars.h"
 
+#ifndef _
+/* When LVGL i18n support is not enabled, fall back to a no‑op macro.
+ * This keeps the source compatible with the original code that uses the _() syntax.
+ */
+#define _(text) (text)
+#endif
 
 #include <string.h>
 

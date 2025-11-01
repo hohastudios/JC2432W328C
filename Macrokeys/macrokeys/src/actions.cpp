@@ -11,6 +11,9 @@
 
 #include <BleKeyboard.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void action_btn_11_pressed(lv_event_t * e)
 {
@@ -135,19 +138,12 @@ void action_btn_23_1_pressed(lv_event_t * e)
 
 void action_goto_main_v(lv_event_t * e)
 {
-    // TODO: Implement navigation to main view.
+    loadScreen(SCREEN_ID_MAIN);   
 }
 
 void action_goto_profile_v(lv_event_t * e)
 {
-    // TODO: Implement navigation to profile view.
-}
-
-#ifdef __cplusplus
-}
-#endif(lv_event_t * e)
-{
-    /* TODO: Implement handler */
+    loadScreen(SCREEN_ID_STARTUP);
 }
 
 #ifdef __cplusplus
