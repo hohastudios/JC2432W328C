@@ -2,13 +2,10 @@
 #include "src/CST820.h"          // Capacitive touch driver
 #include <BleKeyboard.h>
 #include "src/ui.h"
+#include "src/configreader.h"
 #include <lvgl.h> 
-#include <FS.h>
-#include <SD.h>
-#include <SPI.h>
 
 extern BleKeyboard ble_Keyboard;
-#define SD_CS_PIN 5
 
 // ======= Display Setup for ST7789 on ESP32 =======
 class LGFX_JustDisplay : public lgfx::LGFX_Device {
@@ -86,19 +83,12 @@ void touchpad_read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
   }
 }
 
-void readSd(){
-
-}
-
 void setup() {
   Serial.begin(115200);
   delay(1500);
-  Serial.println(F("🧪 LVGL v9 + CST820 + ST7789 Demo"));
-  if (!SD.begin()) { // Or SD_MMC.begin() if using SD_MMC
-      Serial.println("Card Mount Failed");
-      return;
-  }
-  Serial.println("Card Mounted");
+  Serial.println(F("🧪 LVGL v9 + CST820 + ST7789"));
+  Serial.println(F("MacroKeys Launching..."));
+  Serial.println(read_sd_directory());
   // Backlight
   pinMode(27, OUTPUT);
   digitalWrite(27, HIGH);
@@ -112,19 +102,7 @@ void setup() {
   touch.begin();
   Serial.printf("🔍 Touch Chip ID: 0x%02X\n", touch.readChipID());
 
-  File configFile = SD.open("/bindings.txt", FILE_READ);
-  if (!configFile) {
-      Serial.println("Failed to open config.txt for reading");
-      return;
-  }
 
-  while (configFile.available()) {
-    String line = configFile.readStringUntil('\n');
-    Serial.println(line);
-    // Process the line to extract configuration settings
-  }
-
-  configFile.close();
    // LVGL init
   lv_init();
 

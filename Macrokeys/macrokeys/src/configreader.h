@@ -1,6 +1,5 @@
 #ifndef EEZ_LVGL_UI_VARS_H
 #define EEZ_LVGL_UI_VARS_H
-#include <ArduinoJson.h>
 #include <FS.h>
 
 #ifdef __cplusplus
@@ -9,6 +8,8 @@ extern "C" {
 
 void read_config_file(fs::FS &fs, const char * path); 
 void parse_json(char* input);
+String read_sd_directory();
+
 
 
 #ifdef __cplusplus
