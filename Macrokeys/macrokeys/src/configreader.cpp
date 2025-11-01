@@ -65,20 +65,22 @@ void read_config_file(String path) {
 
   Serial.println("File Content:");
   Serial.println(input);
+  parse_json(input.c_str());
 
 }
 
-void parse_json(char* input) {
+void parse_json(const char* input) {
     StaticJsonDocument<200> doc;
     DeserializationError error = deserializeJson(doc, input);
 
     if (error) {
-    Serial.print("parse_json() failed: ");
-    Serial.println(error.c_str());
-    return;
+      Serial.print("parse_json() failed: ");
+      Serial.println(error.c_str());
+      return;
     }
 
     const char* btn11_label = doc["btn11"]["label"]; // "1"
-    const char* btn11_binding = doc["btn11"]["binding"]; // "1"
+    const char* btn11_bind = doc["btn11"]["bind"]; // "1"
+    Serial.println(btn11_label); 
 }
 

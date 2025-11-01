@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-void parse_json(char* input);
+void parse_json(const char* input);
 
 #ifdef __cplusplus
 }
