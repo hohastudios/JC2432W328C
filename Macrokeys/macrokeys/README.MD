@@ -1,9 +1,13 @@
 # Bluetooth Macrokeys ESP32 JC2432W28C Guition implementation
 
-EEZ studio -> LVGl mative cpp implementation
-blekeyboard library
-Loads json profiles from Sd card by reading macrokeys/config folder
-Two Tab 3x2 Custom buttons, button box
+## Features 
+ - EEZ studio -> LVGl mative cpp implementation
+
+ - BleKeyboard library
+
+ - Loads json profiles from Sd card by reading macrokeys/config folder
+
+ - Two Tab 3x2 Custom buttons, button box
 
 Todo: deserialise json and map from config
 
