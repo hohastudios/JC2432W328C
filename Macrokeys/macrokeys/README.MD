@@ -1,4 +1,4 @@
-#Bluetooth Macrokeys ESP32 JC2432W28C Guition implementation
+# Bluetooth Macrokeys ESP32 JC2432W28C Guition implementation
 
 EEZ studio -> LVGl mative cpp implementation
 blekeyboard library
@@ -7,7 +7,7 @@ Two Tab 3x2 Custom buttons, button box
 
 Todo: deserialise json and map from config
 
-##Flow diagram (on going)
+## Flow diagram (on going)
 ```mermaid
 sequenceDiagram
     participant User
